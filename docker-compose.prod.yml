@@ -1,0 +1,20 @@
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "80:80"
+    networks:
+      - web
+
+  backend:
+    build: ./backend
+    environment:
+      MONGO_URI: mongodb://mongo-main:27017/mydb
+    ports:
+      - "5000:5000"
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge

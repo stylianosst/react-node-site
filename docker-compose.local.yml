@@ -1,0 +1,10 @@
+services:
+  mongo:
+    image: mongo
+    volumes:
+      - react_mongo_data:/data/db
+    networks:
+      - web
+
+volumes:
+  react_mongo_data:
