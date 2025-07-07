@@ -1,20 +1,13 @@
+version: '3.8'
+
 services:
-  frontend:
+  node:
     build: ./frontend
     ports:
-      - "80:80"
+      - "3000:3000"  # Expose Node app to host on port 3000
     networks:
-      - web
-
-  backend:
-    build: ./backend
-    environment:
-      MONGO_URI: mongodb://mongo-main:27017/mydb
-    ports:
-      - "5000:5000"
-    networks:
-      - web
+      - app-network
 
 networks:
-  web:
-    driver: bridge
+  app-network:
+    external: false
